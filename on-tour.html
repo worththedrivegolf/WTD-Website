@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Worth the Drive On Tour — Mobile golf simulator events for parties, corporate events, fundraisers & more across Northeast Indiana."/>
+  <title>On Tour — Mobile Simulator | Worth the Drive Golf Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--navy:#1a2744;--navy-dk:#0e1a2e;--green:#5da83a;--green-lt:#7ed957;--gold:#f5c518;--white:#fff;--off:#f4f6f9;--muted:#5a6a8a;--border:#d0d8e8;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,26,46,0.97);backdrop-filter:blur(12px);border-bottom:2px solid rgba(93,168,58,0.25);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{height:44px;width:auto;}
+    .nav-links{display:flex;gap:22px;align-items:center;list-style:none;}
+    .nav-links a{font-family:'Oswald',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+    .nav-book{background:linear-gradient(135deg,var(--green),var(--green-lt));color:var(--white)!important;padding:9px 20px;border-radius:50px;font-weight:700!important;box-shadow:0 3px 12px rgba(93,168,58,0.35);letter-spacing:1.5px;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--navy-dk);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-decoration:none;}
+    .mob-book{background:linear-gradient(135deg,var(--green),var(--green-lt));padding:14px 40px;border-radius:50px;}
+
+    .page-hero{background:linear-gradient(160deg,rgba(8,15,30,0.95) 0%,rgba(14,28,14,0.88) 100%),url('/images/mobile-simulator.jpg') center/cover no-repeat;padding:130px 24px 72px;text-align:center;position:relative;}
+    .page-hero-inner{max-width:740px;margin:0 auto;animation:fadeUp 0.6s ease 0.1s both;}
+    .eyebrow{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--green);font-weight:700;display:block;margin-bottom:10px;}
+    .eyebrow.gold{color:var(--gold);}
+    .page-hero h1{font-family:'Oswald',sans-serif;font-size:clamp(36px,9vw,66px);font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+    .page-hero h1 span{color:var(--green);}
+    .page-hero p{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto;}
+    .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 30px;border-radius:50px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;cursor:pointer;border:none;min-height:48px;}
+    .btn:hover{transform:translateY(-2px);opacity:0.9;}
+    .btn-green{background:linear-gradient(135deg,var(--green),var(--green-lt));color:var(--white);box-shadow:0 4px 16px rgba(93,168,58,0.35);}
+    .btn-outline-w{background:rgba(255,255,255,0.07);color:var(--white);border:1.5px solid rgba(255,255,255,0.3);}
+    .btn-outline-w:hover{border-color:var(--gold);color:var(--gold);}
+
+    .section{padding:72px 24px;}
+    .section-inner{max-width:1000px;margin:0 auto;}
+    .section-title{font-family:'Oswald',sans-serif;font-size:clamp(24px,5vw,40px);font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+    .section-title span{color:var(--green);}
+    .section-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:560px;}
+    .bg-off{background:var(--off);}
+    .bg-navy{background:var(--navy);}
+
+    .features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px;}
+    .feature-card{background:var(--white);border:1.5px solid var(--border);border-left:4px solid var(--green);border-radius:8px;padding:22px;}
+    .feature-card h3{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px;}
+    .feature-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+    .occasions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px;}
+    .occasion{background:var(--navy);border-radius:8px;padding:18px;text-align:center;}
+    .occasion-icon{font-size:26px;margin-bottom:7px;display:block;}
+    .occasion h4{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.5px;}
+
+    .pricing-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;}
+    .price-box{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:22px 14px;text-align:center;transition:transform 0.2s;}
+    .price-box:hover{transform:translateY(-2px);}
+    .price-box.featured{background:var(--navy);border-color:var(--green);}
+    .price-dur{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+    .price-box.featured .price-dur{color:rgba(255,255,255,0.45);}
+    .price-amt{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;color:var(--navy);}
+    .price-box.featured .price-amt{color:var(--gold);}
+    .price-amt sup{font-size:16px;vertical-align:super;}
+    .price-note{font-size:12px;color:var(--muted);margin-top:5px;}
+    .price-box.featured .price-note{color:rgba(255,255,255,0.38);}
+    .price-badge{display:inline-block;margin-top:7px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--green);color:var(--white);padding:3px 10px;border-radius:3px;}
+
+    .steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+    .step{text-align:center;padding:24px 18px;}
+    .step-num{width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--white);font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+    .step h4{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--white);text-transform:uppercase;margin-bottom:7px;}
+    .step p{font-size:13px;color:rgba(255,255,255,0.48);line-height:1.6;}
+
+    .counties-strip{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
+    .county-tag{background:rgba(93,168,58,0.1);border:1px solid rgba(93,168,58,0.3);border-radius:20px;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--navy);}
+
+    .cta-strip{padding:72px 24px;background:linear-gradient(135deg,var(--green) 0%,#1f6b10 100%);text-align:center;}
+    .cta-strip .section-title{color:var(--white);margin-bottom:8px;}
+
+    .site-footer{background:var(--navy-dk);border-top:3px solid var(--green);padding:44px 24px 24px;}
+    .footer-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;}
+    .footer-logo{width:120px;height:auto;margin-bottom:12px;}
+    .footer-brand p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.8;}
+    .footer-brand a{color:rgba(255,255,255,0.38);text-decoration:none;}
+    .footer-col h4{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;}
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:9px;}
+    .footer-col ul li a{font-size:13px;color:rgba(255,255,255,0.42);text-decoration:none;transition:color 0.2s;}
+    .footer-col ul li a:hover{color:var(--white);}
+    .footer-bottom{max-width:1000px;margin:24px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;color:rgba(255,255,255,0.18);}
+
+    .modal-overlay{position:fixed;inset:0;background:rgba(8,15,30,0.88);backdrop-filter:blur(10px);z-index:500;display:none;align-items:center;justify-content:center;padding:24px;}
+    .modal-overlay.open{display:flex;}
+    .modal-box{background:var(--navy);border:1.5px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px 32px;max-width:460px;width:100%;text-align:center;position:relative;animation:fadeUp 0.3s ease;}
+    .modal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.07);border:none;color:rgba(255,255,255,0.5);width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    .modal-eyebrow{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:8px;}
+    .modal-title{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+    .modal-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:26px;line-height:1.6;}
+    .modal-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .modal-option{border-radius:10px;padding:22px 14px;text-decoration:none;display:flex;flex-direction:column;gap:7px;align-items:center;text-align:center;transition:transform 0.2s;border:1.5px solid transparent;}
+    .modal-option:hover{transform:translateY(-3px);}
+    .modal-option.green{background:rgba(93,168,58,0.1);border-color:rgba(93,168,58,0.35);}
+    .modal-option.green:hover{background:rgba(93,168,58,0.18);border-color:var(--green);}
+    .modal-option.gold{background:rgba(245,197,24,0.07);border-color:rgba(245,197,24,0.28);}
+    .modal-option.gold:hover{background:rgba(245,197,24,0.13);border-color:var(--gold);}
+    .modal-option-icon{font-size:28px;}
+    .modal-option-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+    .modal-option-label.green{color:var(--green);}
+    .modal-option-label.gold{color:var(--gold);}
+    .modal-option-title{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--white);text-transform:uppercase;}
+    .modal-option-desc{font-size:11px;color:rgba(255,255,255,0.42);line-height:1.5;}
+    .modal-option-cta{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+    .modal-option-cta.green{color:var(--green);}
+    .modal-option-cta.gold{color:var(--gold);}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+    @media(max-width:768px){
+      .nav-links{display:none;}.hamburger{display:flex;}
+      .page-hero{padding:100px 20px 56px;}
+      .features-grid,.steps-row,.pricing-row{grid-template-columns:1fr;}
+      .occasions-grid{grid-template-columns:repeat(2,1fr);}
+      .footer-grid{grid-template-columns:1fr;gap:24px;}.footer-bottom{flex-direction:column;text-align:center;}
+      .modal-options{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html"><img src="/images/wtd-logo.png" alt="Worth the Drive Golf Studio" class="nav-logo"/></a>
+  <ul class="nav-links">
+    <li><a href="on-tour.html" class="active">On Tour</a></li>
+    <li><a href="studio.html">The Studio</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" class="nav-book" onclick="openBookingModal();return false;">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="on-tour.html" onclick="closeMenu()">On Tour</a>
+  <a href="studio.html" onclick="closeMenu()">The Studio</a>
+  <a href="memberships.html" onclick="closeMenu()">Memberships</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="contact.html" onclick="closeMenu()">Contact</a>
+  <a href="#" class="mob-book" onclick="openBookingModal();closeMenu();return false;">Book Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">● Available Now</span>
+    <h1>On Tour —<br/><span>Mobile Simulator</span></h1>
+    <p>We bring the full golf simulator experience to your event. You pick the location across Northeast Indiana — we handle setup, operation, and teardown.</p>
+    <div class="hero-btns">
+      <a href="https://book.worththedrivegolf.com" class="btn btn-green" target="_blank">Reserve Your Date →</a>
+      <a href="#pricing" class="btn btn-outline-w">View Pricing</a>
+    </div>
+  </div>
+</div>
+
+<section class="section bg-off">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="eyebrow">What's Included</span>
+      <h2 class="section-title">Everything <span>Handled</span></h2>
+      <p class="section-sub">One price. Full service. Zero hassle for you or your guests.</p>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card"><h3>🚐 We Come to You</h3><p>Full mobile setup delivered anywhere in Noble, LaGrange, Steuben & DeKalb Counties. Backyard, event venue, office — you pick the spot.</p></div>
+      <div class="feature-card"><h3>⛳ Inflatable Simulator</h3><p>Pro-grade inflatable setup with a high-definition screen. Long drive, closest-to-the-pin, and open play formats keep every guest engaged.</p></div>
+      <div class="feature-card"><h3>👨‍💼 On-Site Staff</h3><p>A Worth the Drive team member runs the experience start to finish. You don't lift a finger — just enjoy the event with your guests.</p></div>
+      <div class="feature-card"><h3>🔧 Full Setup & Teardown</h3><p>We arrive early, run the entire show, and tear down when you're done. Zero hassle before or after your event.</p></div>
+      <div class="feature-card"><h3>🎯 Fun for Any Crowd</h3><p>No golf experience needed. Formats designed to get everyone involved — from first-timers to regulars. Always a great time.</p></div>
+      <div class="feature-card"><h3>📸 A Memorable Experience</h3><p>A genuine talking point and crowd-pleaser at any event. Guests leave impressed and ready to tell their friends.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">Perfect For</span>
+      <h2 class="section-title">Any <span>Occasion</span></h2>
+    </div>
+    <div class="occasions-grid reveal">
+      <div class="occasion"><span class="occasion-icon">🎂</span><h4>Birthdays & Parties</h4></div>
+      <div class="occasion"><span class="occasion-icon">🏢</span><h4>Corporate Events</h4></div>
+      <div class="occasion"><span class="occasion-icon">🎓</span><h4>Graduations</h4></div>
+      <div class="occasion"><span class="occasion-icon">🤝</span><h4>Fundraisers</h4></div>
+      <div class="occasion"><span class="occasion-icon">⛳</span><h4>Golf Outings</h4></div>
+      <div class="occasion"><span class="occasion-icon">🏘️</span><h4>Neighborhood Events</h4></div>
+      <div class="occasion"><span class="occasion-icon">🥂</span><h4>Bachelor/Bachelorette</h4></div>
+      <div class="occasion"><span class="occasion-icon">🎪</span><h4>Vendor Shows & Fests</h4></div>
+      <div class="occasion"><span class="occasion-icon">❤️</span><h4>Client Appreciation</h4></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-off" id="pricing">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">Event Packages</span>
+      <h2 class="section-title">Straightforward <span>Pricing</span></h2>
+      <p class="section-sub" style="margin:0 auto;">No hidden fees. Everything included. Additional time may be available at $125/hr.</p>
+    </div>
+    <div class="pricing-row reveal">
+      <div class="price-box featured"><div class="price-dur">4 Hours</div><div class="price-amt"><sup>$</sup>500</div><div class="price-note">Minimum booking</div><span class="price-badge">Most Popular</span></div>
+      <div class="price-box"><div class="price-dur">5 Hours</div><div class="price-amt"><sup>$</sup>625</div><div class="price-note">Great for parties</div></div>
+      <div class="price-box"><div class="price-dur">6 Hours</div><div class="price-amt"><sup>$</sup>750</div><div class="price-note">Most flexible</div></div>
+      <div class="price-box"><div class="price-dur">Full Day</div><div class="price-amt"><sup>$</sup>1,000</div><div class="price-note">Up to 10 hours</div></div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:14px;font-style:italic;">$100 deposit secures your date · Balance due day-of · Additional time may be available at $125/hr · Full Day package limited to 10 hours max · Custom quotes available for larger events</p>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://book.worththedrivegolf.com" class="btn btn-green" target="_blank">Reserve Your Date →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow gold">How It Works</span>
+      <h2 class="section-title" style="color:var(--white);">Three <span>Simple Steps</span></h2>
+    </div>
+    <div class="steps-row reveal">
+      <div class="step"><div class="step-num">1</div><h4>Book Online</h4><p>Pick your date, duration, and pay the $100 deposit at book.worththedrivegolf.com. We confirm within 24 hours.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>We Show Up</h4><p>Our team arrives early, sets up the full simulator at your location, and runs the entire experience on-site.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>You Enjoy</h4><p>Your guests play, compete, and have a great time. We tear everything down when done. Balance due day-of.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">Service Area</span>
+      <h2 class="section-title">We Come <span>to You.</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Available Fridays, Saturdays & Sundays · 10 AM – 10 PM</p>
+    </div>
+    <div class="counties-strip reveal">
+      <div class="county-tag">📍 Noble County</div>
+      <div class="county-tag">📍 LaGrange County</div>
+      <div class="county-tag">📍 Steuben County</div>
+      <div class="county-tag">📍 DeKalb County</div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:14px;">Outside Noble, LaGrange, Steuben, or DeKalb County? Need a weekday, a Monday event, or a non-standard time? <a href="contact.html" style="color:var(--green);">Reach out</a> — we're happy to discuss availability and put together a custom quote.</p>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <span class="eyebrow" style="color:rgba(255,255,255,0.65);">Ready?</span>
+  <h2 class="section-title" style="color:var(--white);margin-bottom:8px;">Book Your <span style="color:var(--gold);">Event</span></h2>
+  <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;">$100 deposit secures your date. Available Fri–Sun.</p>
+  <a href="https://book.worththedrivegolf.com" class="btn btn-green" style="margin:0 auto;" target="_blank">Reserve Your Date →</a>
+  <p style="margin-top:16px;font-size:13px;color:rgba(255,255,255,0.45);">Questions? <a href="tel:8444653983" style="color:rgba(255,255,255,0.8);text-decoration:none;">(844) GOLF-WTD</a></p>
+</section>
+
+
+    <!-- CUSTOM QUOTE STRIP -->
+    <div style="background:rgba(93,168,58,0.07);border-top:1px solid rgba(93,168,58,0.15);padding:14px 24px;text-align:center;">
+      <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:760px;margin:0 auto;line-height:1.7;">Outside Noble, LaGrange, Steuben, or DeKalb County? Need a weekday, a Monday event, or a non-standard time? <a href="contact.html?inquiry=custom" style="color:var(--green-lt);font-weight:600;">Reach out</a> — we're happy to discuss availability and put together a custom quote.</p>
+    </div>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="/images/wtd-logo.png" alt="Worth the Drive Golf Studio" class="footer-logo"/>
+      <p>Worth the Drive Golf Studio<br/>7032 N Main St · Wawaka, IN 46794<br/><a href="tel:8444653983">(844) GOLF-WTD · (844) 465-3983</a></p>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="on-tour.html">On Tour — Mobile</a></li>
+      <li><a href="studio.html">The Studio</a></li>
+      <li><a href="memberships.html">Memberships</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Book & Connect</h4><ul>
+      <li><a href="https://book.worththedrivegolf.com" target="_blank">Book Mobile Event</a></li>
+      <li><a href="memberships.html#studio-waitlist">Join Studio Waitlist</a></li>
+      <li><a href="memberships.html#founders">Reserve Founders Spot</a></li>
+      <li><a href="mailto:info@worththedrivegolf.com">info@worththedrivegolf.com</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Worth the Drive Golf Studio · Wawaka, Indiana</span><span>worththedrivegolf.com</span></div>
+</footer>
+
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeBookingModal()">✕</button>
+    <span class="modal-eyebrow">Worth the Drive Golf Studio</span>
+    <h2 class="modal-title">How Can We Help?</h2>
+    <p class="modal-sub">Select an experience to get started.</p>
+    <div class="modal-options">
+      <a href="https://book.worththedrivegolf.com" class="modal-option green" target="_blank" onclick="closeBookingModal()">
+        <span class="modal-option-icon">🚐</span>
+        <span class="modal-option-label green">● Available Now</span>
+        <span class="modal-option-title">Mobile Event</span>
+        <span class="modal-option-desc">Book the On Tour simulator for your event. Fri–Sun, Northeast Indiana.</span>
+        <span class="modal-option-cta green">Book Now →</span>
+      </a>
+      <a href="memberships.html#founders" class="modal-option gold" onclick="closeBookingModal()">
+        <span class="modal-option-icon">🏌️</span>
+        <span class="modal-option-label gold">🚧 Coming Soon</span>
+        <span class="modal-option-title">Studio Access</span>
+        <span class="modal-option-desc">Private indoor studio — join the Founders Club waitlist to secure your spot.</span>
+        <span class="modal-option-cta gold">Join Waitlist →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openBookingModal(){var m=document.getElementById('bookingModal');if(m)m.classList.add('open');}
+  function closeBookingModal(){var m=document.getElementById('bookingModal');if(m)m.classList.remove('open');}
+  var bm=document.getElementById('bookingModal');if(bm)bm.addEventListener('click',function(e){if(e.target===this)closeBookingModal();});
+  var hb=document.getElementById('hamburger');if(hb)hb.addEventListener('click',function(){document.getElementById('mobileMenu').classList.toggle('open');});
+  function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
