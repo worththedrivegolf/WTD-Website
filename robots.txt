@@ -1,0 +1,31 @@
+# Worth the Drive Golf Studio — robots.txt
+# Allow all standard search crawlers
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI search crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://worththedrivegolf.com/sitemap.xml
