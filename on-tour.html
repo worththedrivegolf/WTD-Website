@@ -98,7 +98,7 @@
     .cta-strip .section-title{color:var(--white);margin-bottom:8px;}
 
     .site-footer{background:var(--navy-dk);border-top:3px solid var(--green);padding:44px 24px 24px;}
-    .footer-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;}
+    .footer-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;}
     .footer-logo{width:120px;height:auto;margin-bottom:12px;}
     .footer-brand p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.8;}
     .footer-brand a{color:rgba(255,255,255,0.38);text-decoration:none;}
@@ -137,6 +137,16 @@
     .reveal.visible{opacity:1;transform:translateY(0);}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
+    .faq-list{margin-top:36px;display:flex;flex-direction:column;gap:12px;}
+    .faq-item{background:var(--white);border:1.5px solid var(--border);border-left:4px solid var(--green);border-radius:8px;overflow:hidden;}
+    .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.4px;}
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-item summary::after{content:"+";font-family:'Oswald',sans-serif;font-size:24px;font-weight:400;color:var(--green);line-height:1;flex-shrink:0;transition:transform 0.2s;}
+    .faq-item[open] summary::after{content:"–";}
+    .faq-item summary:hover{color:var(--green);}
+    .faq-answer{padding:0 22px 20px;font-size:14px;color:var(--muted);line-height:1.75;}
+    .faq-policy-note{margin-top:24px;font-size:12px;color:var(--muted);line-height:1.7;text-align:center;font-style:italic;}
+
     @media(max-width:768px){
       .nav-links{display:none;}.hamburger{display:flex;}
       .page-hero{padding:100px 20px 56px;}
@@ -144,6 +154,8 @@
       .occasions-grid{grid-template-columns:repeat(2,1fr);}
       .footer-grid{grid-template-columns:1fr;gap:24px;}.footer-bottom{flex-direction:column;text-align:center;}
       .modal-options{grid-template-columns:1fr;}
+      .faq-item summary{font-size:14px;padding:16px 18px;}
+      .faq-answer{padding:0 18px 18px;}
     }
   </style>
 
@@ -227,26 +239,90 @@
     },
     {
       "@type": "Question",
-      "name": "What areas does Worth the Drive serve?",
+      "name": "How much is the deposit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Worth the Drive On Tour serves Noble, LaGrange, Steuben, and DeKalb counties in Northeast Indiana. Events outside this area may be available — reach out for a custom quote."
+        "text": "A $100 deposit is required to reserve and secure your event date and time."
       }
     },
     {
       "@type": "Question",
-      "name": "What days are mobile events available?",
+      "name": "When is the remaining balance due?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Mobile golf simulator bookings are available Friday through Sunday. Weekday and Monday events may be available by request for a custom quote."
+        "text": "The remaining balance is due at arrival before the event begins."
       }
     },
     {
       "@type": "Question",
-      "name": "How do I reserve a date?",
+      "name": "What is the cancellation policy?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A $100 deposit secures your date. You can book online and the remaining balance is due the day of your event. Additional time beyond your package may be available at $125 per hour."
+        "text": "Cancellations made within 48 hours of the scheduled event will result in forfeiture of the $100 deposit. Same-day cancellations or no-shows may be subject to additional charges related to staffing, travel, setup, and reserved equipment time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if weather is an issue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Outdoor events are subject to weather and safety conditions. Worth the Drive may delay, pause, reschedule, modify, or cancel setup or operation due to rain, lightning, excessive wind, unsafe ground conditions, or other safety concerns. Rain-date rescheduling is allowed based on availability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much space is needed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The mobile simulator enclosure requires approximately 15 feet wide by 18 feet deep of clear setup space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What power is required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard electrical outlet is required. The outlet or extension cord must be within 5 feet of the enclosure setup area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the simulator be used indoors or outdoors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The simulator can be used indoors or outdoors. Indoor events require a minimum ceiling height of 12 feet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are clubs, balls, and tees provided?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Clubs, balls, and tees are provided. Standard men's right-handed clubs are included. Left-handed, junior, and women's sets are available upon request."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can kids participate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Participants must be 6 years of age or older."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is alcohol allowed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alcohol is allowed if permitted by the venue or event host. However, alcohol is not allowed inside the simulator enclosure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Worth the Drive On Tour serves Noble, LaGrange, Steuben, and DeKalb Counties. Events outside those areas may be available, but require a custom quote by email."
       }
     }
   ]
@@ -376,6 +452,63 @@
   </div>
 </section>
 
+<section class="section bg-off" id="on-tour-faq">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">On Tour</span>
+      <h2 class="section-title">FAQ &amp; <span>Policies</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Everything you need to know about booking a mobile golf simulator event with Worth the Drive On Tour.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>How much is the deposit?</summary>
+        <div class="faq-answer">A $100 deposit is required to reserve and secure your event date and time.</div>
+      </details>
+      <details class="faq-item">
+        <summary>When is the remaining balance due?</summary>
+        <div class="faq-answer">The remaining balance is due at arrival before the event begins.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the cancellation policy?</summary>
+        <div class="faq-answer">Cancellations made within 48 hours of the scheduled event will result in forfeiture of the $100 deposit. Same-day cancellations or no-shows may be subject to additional charges related to staffing, travel, setup, and reserved equipment time.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if weather is an issue?</summary>
+        <div class="faq-answer">Outdoor events are subject to weather and safety conditions. Worth the Drive may delay, pause, reschedule, modify, or cancel setup or operation due to rain, lightning, excessive wind, unsafe ground conditions, or other safety concerns. Rain-date rescheduling is allowed based on availability.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much space is needed?</summary>
+        <div class="faq-answer">The mobile simulator enclosure requires approximately 15 feet wide by 18 feet deep of clear setup space.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What power is required?</summary>
+        <div class="faq-answer">A standard electrical outlet is required. The outlet or extension cord must be within 5 feet of the enclosure setup area.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can the simulator be used indoors or outdoors?</summary>
+        <div class="faq-answer">Yes. The simulator can be used indoors or outdoors. Indoor events require a minimum ceiling height of 12 feet.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are clubs, balls, and tees provided?</summary>
+        <div class="faq-answer">Yes. Clubs, balls, and tees are provided. Standard men's right-handed clubs are included. Left-handed, junior, and women's sets are available upon request.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can kids participate?</summary>
+        <div class="faq-answer">Yes. Participants must be 6 years of age or older.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is alcohol allowed?</summary>
+        <div class="faq-answer">Alcohol is allowed if permitted by the venue or event host. However, alcohol is not allowed inside the simulator enclosure.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What areas do you serve?</summary>
+        <div class="faq-answer">Worth the Drive On Tour serves Noble, LaGrange, Steuben, and DeKalb Counties. Events outside those areas may be available, but require a custom quote by email.</div>
+      </details>
+    </div>
+    <p class="faq-policy-note">Still have questions? <a href="contact.html" style="color:var(--green);">Reach out</a> — we're happy to help you plan your event.</p>
+  </div>
+</section>
+
 <section class="cta-strip">
   <span class="eyebrow" style="color:rgba(255,255,255,0.65);">Ready?</span>
   <h2 class="section-title" style="color:var(--white);margin-bottom:8px;">Book Your <span style="color:var(--gold);">Event</span></h2>
@@ -396,6 +529,11 @@
       <li><a href="memberships.html">Memberships</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>FAQ &amp; Policies</h4><ul>
+      <li><a href="on-tour.html#on-tour-faq">On Tour FAQ</a></li>
+      <li><a href="studio.html#studio-faq">Studio FAQ</a></li>
+      <li><a href="memberships.html#membership-faq">Membership FAQ</a></li>
     </ul></div>
     <div class="footer-col"><h4>Book & Connect</h4><ul>
       <li><a href="https://book.worththedrivegolf.com" target="_blank">Book Mobile Event</a></li>
