@@ -146,6 +146,13 @@
     .faq-item summary:hover{color:var(--green);}
     .faq-answer{padding:0 22px 20px;font-size:14px;color:var(--muted);line-height:1.75;}
     .faq-policy-note{margin-top:24px;font-size:12px;color:var(--muted);line-height:1.7;text-align:center;font-style:italic;}
+    .snapshot-card{max-width:640px;margin:32px auto 0;background:var(--white);border:1.5px solid var(--border);border-top:3px solid var(--green);border-radius:10px;padding:28px 30px;}
+    .snapshot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+    .snapshot-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--navy);line-height:1.6;}
+    .snapshot-list li svg{flex-shrink:0;margin-top:2px;color:var(--green);}
+    .snapshot-cta{display:block;margin-top:22px;text-align:center;}
+    .snapshot-cta a{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);text-decoration:none;border:1.5px solid var(--green);border-radius:50px;padding:11px 26px;display:inline-block;transition:background 0.2s,color 0.2s;}
+    .snapshot-cta a:hover{background:var(--green);color:var(--white);}
 
     @media(max-width:768px){
       .nav-links{display:none;}.hamburger{display:flex;}
@@ -509,6 +516,27 @@
   </div>
 </section>
 
+<section class="section" id="rental-terms-snapshot">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">Good to Know</span>
+      <h2 class="section-title">Rental Terms <span>Snapshot</span></h2>
+      <p class="section-sub" style="margin:0 auto;">The quick version before you book. Full details are on our Rental Terms &amp; Policies page.</p>
+    </div>
+    <div class="snapshot-card reveal">
+      <ul class="snapshot-list">
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>$100 deposit required to reserve your event</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Remaining balance due at arrival</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Cancellations within 48 hours forfeit the deposit</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>15&rsquo; x 18&rsquo; setup space required</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Indoor events require 12&rsquo; ceiling height</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Standard outlet or extension cord within 5&rsquo; of setup area required</span></li>
+      </ul>
+      <span class="snapshot-cta"><a href="rental-terms.html">View Full Rental Terms &amp; Policies →</a></span>
+    </div>
+  </div>
+</section>
+
 <section class="cta-strip">
   <span class="eyebrow" style="color:rgba(255,255,255,0.65);">Ready?</span>
   <h2 class="section-title" style="color:var(--white);margin-bottom:8px;">Book Your <span style="color:var(--gold);">Event</span></h2>
@@ -534,6 +562,7 @@
       <li><a href="on-tour.html#on-tour-faq">On Tour FAQ</a></li>
       <li><a href="studio.html#studio-faq">Studio FAQ</a></li>
       <li><a href="memberships.html#membership-faq">Membership FAQ</a></li>
+      <li><a href="rental-terms.html">Rental Terms</a></li>
     </ul></div>
     <div class="footer-col"><h4>Book & Connect</h4><ul>
       <li><a href="https://book.worththedrivegolf.com" target="_blank">Book Mobile Event</a></li>
